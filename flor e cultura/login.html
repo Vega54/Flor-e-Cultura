@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Flor e Cultura</title>
+
+    <link rel="stylesheet" href="./Src/css/style.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field required" placeholder="e-mail" autocomplete="off" oninput="emailValidate()">
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field required" placeholder="senha" autocomplete="off" oninput="passwordValidate()">
+        </div>
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Ficar conectado</label>
+            </section>
+            <section>
+                <a href="#">Esqueceu a senha?</a>
+            </section>
+        </div>
+        <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit">Entrar</label>
+        </div>
+        <div class="sign-up-link">
+            <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+        </div>
+    </div>
+</body>
+
+    <script>
+
+        const form   = document.getElementById('form')
+        const campos = document.querySelectorAll('.required')
+        const spans  = document.querySelectorAll('.span-required')
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+
+        function setError(index){
+            campos[index].style.border = '2px solid #e63636';
+            spans[index].style.display = 'block';
+        }
+
+        function removeError(index){
+            campos[index].style.border = '';
+            spans[index].style.display = 'none';
+        }
+
+        function emailValidate(){
+                if(!emailRegex.test(campos[0].value))
+            {
+                setError(0);
+            }
+
+                else
+                {
+                    removeError(0);
+                }
+            }
+
+            function passwordValidate(){
+                if(campos[1].value.length < 8)
+            {
+                setError(1);
+            }
+                else
+                {
+                    removeError(1);
+                }
+            }
+
+    </script>
+</html>
